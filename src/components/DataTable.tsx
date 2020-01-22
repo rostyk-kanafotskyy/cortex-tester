@@ -10,6 +10,7 @@ interface DataTableState {
   data: any;
   zoom: string;
   loading: boolean;
+  error: string;
 }
 
 class DataTable extends React.Component<any, DataTableState> {
@@ -23,7 +24,8 @@ class DataTable extends React.Component<any, DataTableState> {
     this.state = {
       data: [],
       zoom: JSON.stringify(zoom, null, 2),
-      loading: false
+      loading: false,
+      error: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -66,24 +68,27 @@ class DataTable extends React.Component<any, DataTableState> {
       this.setState({
         data: root,
         zoom: pacedJson,
-        loading: false
+        loading: false,
+        error: ''
       });
     } catch (e) {
-      this.setState({ loading: false });
+      this.setState({ loading: false, error: e.message });
     }
   }
 
   render() {
-    const { data, zoom, loading } = this.state;
+    const { data, zoom, loading, error } = this.state;
     return (
       <div className="data-container border-radius">
-        { loading && <Loading/> }
         <form className="input-data" onSubmit={this.handleSubmit}>
           <label>
             Zoom:
+            <span className="error border-radius">{error}</span>
             <textarea name="zoom" className="border-radius" value={zoom} onChange={this.handleChange} />
           </label>
-          <input className="border-radius" type="submit" value="Send" />
+          <button className="border-radius" type="submit" disabled={loading}>
+            { loading ? <Loading/> : 'Send' }
+          </button>
         </form>
 
         <div className="json-data border-radius">

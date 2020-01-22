@@ -4,19 +4,22 @@
     padding: 10px 20px;
     color: #ffffff;
 }
-
-.loading {
-
+.input-data {
+    position: relative;
 }
 
 .input-data textarea {
-    width: 100%;
+    width: calc(100% - 40px);
     height: 200px;
     resize: vertical;
     overflow: auto;
+    background: white url(http://i.imgur.com/2cOaJ.png) no-repeat local;
+    padding-left: 35px;
+    padding-top: 10px;
+    border-color:#ccc;
 }
 
-.input-data > input[type=submit] {
+.input-data > button {
     width: 100%;
     margin: 10px 0;
     color: #ffffff;
@@ -24,6 +27,7 @@
     border-color: #008bc3;
     height: 30px;
     font-size: 18px;
+    position: relative;
 }
 
 .border-radius {
@@ -32,5 +36,15 @@
 
 .json-data {
     padding: 10px;
-    background-color: white;;
+    background-color: white;
+}
+
+.error {
+    color: #ff000b;
+    position: absolute;
+    right: 2px;
+    top: 22px;
+    font-size: 12px;
+    background-color: white;
+    padding:  2px 10px;
 }
