@@ -9,13 +9,11 @@
 }
 
 .input-data textarea {
-    width: calc(100% - 40px);
+    width: calc(100% - 10px);
     height: 200px;
     resize: vertical;
     overflow: auto;
-    background: white url(http://i.imgur.com/2cOaJ.png) no-repeat local;
-    padding-left: 35px;
-    padding-top: 10px;
+    padding-left: 5px;
     border-color:#ccc;
 }
 
